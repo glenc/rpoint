@@ -38,7 +38,7 @@ module RPoint
       ##
       # Create a new web beneath the parent web specified and
       # returns the result
-      def self.create_web(parent, name, type, options = {})
+      def self.create_web(parent, name, template, options = {})
         
         # merge options with defaults
         options = { 
@@ -56,7 +56,7 @@ module RPoint
           name, 
           options[:description], 
           options[:language], 
-          'STS#0', 
+          template.id, 
           options[:unique_permissions], 
           options[:convert_if_exists])
       end
