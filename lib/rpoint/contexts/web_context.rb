@@ -24,14 +24,16 @@ module RPoint
 			# Instance Methods -------------------------------------------------------------------
 			
 			def initialize(url)
-				@site = SPSite.new(url)
+			  @web = RPoint::Helpers.get_web(url)
 			end
 			
+			
 			##
-			# Creates a new list in the web
-			def create_list(name, type, options = {}, &blk)
-				puts "Creating list #{name} of type #{type}"
+			# Creates a new subweb
+			def create_web(name, type, options = {}, &blk)
+			  puts "Creating new web at #{@web.Url}/#{name}"
 			end
+			
 		end
 	end
 end

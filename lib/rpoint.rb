@@ -6,6 +6,7 @@ require 'Microsoft.SharePoint, Version=12.0.0.0, Culture=neutral, PublicKeyToken
 
 # require the rest of the library
 require 'rpoint/aliases'
+require 'rpoint/interop'
 require 'rpoint/contexts'
 require 'rpoint/types'
 

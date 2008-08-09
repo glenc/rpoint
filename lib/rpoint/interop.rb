@@ -1,0 +1,1 @@
+require 'rpoint/interop/helpers'

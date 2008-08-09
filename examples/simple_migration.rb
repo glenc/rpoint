@@ -1,5 +1,11 @@
 require File.dirname(__FILE__) + '/example_helper'
 
+# create a new subweb beneath the root site collection
+at "http://localhost" do
+  create_web "Test", RPoint::Types::Sites::BlankSite
+end
+
+
 #at "http://localhost" do
 #	create_site "My Site", BlankSite
 #	create_site "Another", BlankSite do
@@ -9,17 +15,17 @@ require File.dirname(__FILE__) + '/example_helper'
 
 
 # samples with a site collection
-at "http://localhost" do
-	create_list "My List", RPoint::Types::Lists::DocumentLibrary
-	create_list "Another", RPoint::Types::Lists::CustomList do
-		add_column "Test"
-		add_column "There"
-	end
-end
+#at "http://localhost" do
+#	create_list "My List", RPoint::Types::Lists::DocumentLibrary
+#	create_list "Another", RPoint::Types::Lists::CustomList do
+#		add_column "Test"
+#		add_column "There"
+#	end
+#end
 
-at :list => "http://localhost/lists/Team Discussion" do
-	add_column "My Column"
-end
+#at :list => "http://localhost/lists/Team Discussion" do
+#	add_column "My Column"
+#end
 
 #at :site => "http://localhost" do
 #	puts "hi"

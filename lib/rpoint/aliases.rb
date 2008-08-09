@@ -9,6 +9,6 @@ module RPoint
 	# Set up aliases to common Microsoft.SharePoint objects
 	make_aliases 'Microsoft::SharePoint', %w(SPSite SPWeb SPList SPListItem)
 	make_aliases 'Microsoft::SharePoint::Administration', %w(SPWebApplication)
-	make_aliases 'System', %w(Uri)
+	make_aliases 'System', %w(Uri UriPartial)
 	
 end
