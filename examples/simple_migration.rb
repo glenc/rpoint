@@ -17,6 +17,10 @@ at "http://localhost" do
 	end
 end
 
+at :list => "http://localhost/lists/Team Discussion" do
+	add_column "My Column"
+end
+
 #at :site => "http://localhost" do
 #	puts "hi"
 #end

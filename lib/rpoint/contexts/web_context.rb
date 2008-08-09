@@ -1,9 +1,6 @@
 module RPoint
 	module Contexts
-		
-		##
-		# Context for a site collection
-		class SiteContext
+		class WebContext
 			
 			# Class Methods -------------------------------------------------------------------
 			
@@ -11,9 +8,12 @@ module RPoint
 			# Checks if this context is a valid context for the
 			# args provided
 			def self.valid_for_args(*args)
+				# if first arg is string, valid
+				return true if args[0].is_a? String
+				
 				# if first arg is hash and has key of :site, valid
 				if args[0].is_a? Hash
-					return true if args[0].has_key?(:site)
+					return true if args[0].has_key?(:web)
 				end
 				
 				# otherwise, false
@@ -23,11 +23,15 @@ module RPoint
 			
 			# Instance Methods -------------------------------------------------------------------
 			
-			def initialize(options = {})
-				raise ArgumentError unless options.has_key?(:site)
-				@site = SPSite.new(options[:site])
+			def initialize(url)
+				@site = SPSite.new(url)
 			end
 			
+			##
+			# Creates a new list in the web
+			def create_list(name, type, options = {}, &blk)
+				puts "Creating list #{name} of type #{type}"
+			end
 		end
 	end
 end

@@ -1,5 +1,10 @@
 module RPoint
 	module Contexts
+		
+		##
+		# Valid context factories
+		CONTEXT_FACTORIES = [WebContext, ListContext, SiteContext]
+		
 		class ContextFactory
 			
 			##
@@ -9,8 +14,11 @@ module RPoint
 				raise ArgumentError if args.empty?
 				#raise ArgumentError unless blk
 				
-				# just load the default context for now
-				SiteContext.new(*args).instance_eval(&blk)
+				factory = CONTEXT_FACTORIES.find {|f| f.valid_for_args(*args) }
+				raise ArgumentError if factory.nil?
+				
+				# context found, execute block
+				factory.new(*args).instance_eval(&blk)
 			end
 			
 		end
