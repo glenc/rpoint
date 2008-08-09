@@ -23,15 +23,29 @@ module RPoint
 			
 			# Instance Methods -------------------------------------------------------------------
 			
-			def initialize(url)
-			  @web = RPoint::Helpers.get_web(url)
+			# alias webs interop
+			Webs = RPoint::Interop::Webs
+			
+			
+			def initialize(*args)
+			  url = args[0] if args[0].is_a? String
+			  url = args[0][:web] if args[0].is_a? Hash
+			  raise ArgumentError if url.nil?
+			  
+			  @web = Webs.get_web(url)
 			end
 			
 			
 			##
 			# Creates a new subweb
 			def create_web(name, type, options = {}, &blk)
-			  puts "Creating new web at #{@web.Url}/#{name}"
+			  puts "creating a new web"
+			  new_web = Webs.create_web(@web, name, type, options)
+			  puts "new web: #{new_web.Url}"
+			  
+			  
+			  
+			  #puts "Creating new web at #{@web.Url}/#{name}"
 			end
 			
 		end
