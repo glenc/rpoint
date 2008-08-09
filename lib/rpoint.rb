@@ -5,8 +5,9 @@ require 'Microsoft.SharePoint, Version=12.0.0.0, Culture=neutral, PublicKeyToken
 
 
 # require the rest of the library
-require 'aliases'
-require 'contexts'
+require 'rpoint/aliases'
+require 'rpoint/contexts'
+require 'rpoint/types'
 
 def at(*args, &block)
 	RPoint::Contexts::ContextFactory.create_context(*args, &block)

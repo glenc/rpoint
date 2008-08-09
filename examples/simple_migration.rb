@@ -7,9 +7,14 @@ require File.dirname(__FILE__) + '/example_helper'
 #	end
 #end
 
+
 # samples with a site collection
-at "http://localhost" do |site|
-	puts url
+at "http://localhost" do
+	create_list "My List", RPoint::Types::Lists::DocumentLibrary
+	create_list "Another", RPoint::Types::Lists::CustomList do
+		add_column "Test"
+		add_column "There"
+	end
 end
 
 #at :site => "http://localhost" do
