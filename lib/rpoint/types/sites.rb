@@ -28,13 +28,13 @@ module RPoint
 		  ]
 		  
 		  TEMPLATES.each do |template|
-		    class_eval %{
-  		      class #{template[0]}
-  		        def self.id
-  		          '#{template[1]}'
-  		        end
-  	        end
-  	      }
+		    class_eval <<-END
+		      class #{template[0]}
+		        def self.id
+		          '#{template[1]}'
+	          end
+          end
+	      END
   	      
 	    end
 	    
