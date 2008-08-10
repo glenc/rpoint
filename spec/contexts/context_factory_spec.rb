@@ -9,7 +9,7 @@ describe "ContextFactory" do
     
     before do
       # remove contexts so we don't actually try to create any
-      RPoint::Contexts::CONTEXT_FACTORIES = [StringContext, IntContext]
+      RPoint::Contexts::CONTEXT_FACTORIES = []
     end
     
     it "should have a static create_context method" do
