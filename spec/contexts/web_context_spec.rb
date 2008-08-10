@@ -12,15 +12,15 @@ describe "WebContext" do
     end
   
     it "should be valid for a url" do
-      WebContext.valid_for_args("http://some_url").should == true
+      WebContext.valid_context_for?("http://some_url").should == true
     end
   
     it "should be valid for a hash where :web is provided" do
-      WebContext.valid_for_args(:web => "http://some_url").should == true
+      WebContext.valid_context_for?(:web => "http://some_url").should == true
     end
   
     it "should not be valid for a hash where :web is not provided" do
-      WebContext.valid_for_args(:site => "http://some_url").should == false
+      WebContext.valid_context_for?(:site => "http://some_url").should == false
     end
     
   end
