@@ -1,32 +1,27 @@
 require File.dirname(__FILE__) + '/example_helper'
 
-# create a few subwebs
-#at "http://localhost/sites/testing" do
-#  create_web "Test New Site", BlankSite do
-#    create_web "Child Web", BlankSite
-#  end
-#  
-#  create_web "TeamSite", TeamSite, :url => 'team_site'
-#end
+# create our site collection
+at :webapp => "http://localhost" do
+  create_site "Testing Site", BlankSite, 'pico\\glenc', :url => "http://localhost/sites/testing"
+end
 
+# create our site structure
+at "http://localhost/sites/testing" do
+  create_web "Test New Site", BlankSite do
+    create_web "Child Web", BlankSite
+  end
+  create_web "TeamSite", BlankSite, :url => 'team_site'
+end
 
 # display information about each site collection
 at :webapp => "http://localhost" do
   
-  sites.each do |site|
-    puts site.url
+  sites.each do |site_context|
+    puts site_context.site.Url
   end
   
 end
 
-# create a new site collection
-at :webapp => "http://localhost" do
-  
-  create_site "Simple", BlankSite, 'pico\\glenc'
-  create_site "More Custom", BlankSite, 'pico\\glenc', :managed_path => "sites"
-  create_site "Even More Custom", BlankSite, 'pico\\glenc', :url => "http://localhost/sites/even_more"
-  
-end
 
 
 #at "http://localhost" do

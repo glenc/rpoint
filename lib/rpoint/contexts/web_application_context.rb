@@ -22,6 +22,9 @@ module RPoint
 			
 			# Instance Methods -------------------------------------------------------------------
 			
+			# accessors
+			attr_reader :web_application
+			
 			# set up aliases
 			Administration = RPoint::Interop::Administration
 			Sites = RPoint::Interop::Sites

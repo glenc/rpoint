@@ -23,6 +23,9 @@ module RPoint
 			
 			# Instance Methods -------------------------------------------------------------------
 			
+			# accessors
+			attr_reader :web
+			
 			# alias webs interop
 			Webs = RPoint::Interop::Webs
 			

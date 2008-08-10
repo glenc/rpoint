@@ -23,6 +23,10 @@ module RPoint
 			
 			# Instance Methods -------------------------------------------------------------------
 			
+			# accessors
+			attr_reader :site
+			
+			
 			def initialize(*args)
 			  raise ArgumentError if args.empty?
 			  
@@ -34,10 +38,6 @@ module RPoint
 			  else
 			    raise ArgumentError
 		    end
-			end
-			
-			def url
-			  @site.Url
 			end
 			
 		end
