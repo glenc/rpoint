@@ -12,10 +12,10 @@ module RPoint
 			# the block within the scope of that context
 			def self.create_context(*args, &blk)
 				raise ArgumentError if args.empty?
-				#raise ArgumentError unless blk
+				raise ArgumentError unless block_given?
 				
-				factory = CONTEXT_FACTORIES.find {|f| f.valid_for_args(*args) }
-				raise ArgumentError if factory.nil?
+				factory = CONTEXT_FACTORIES.find {|f| f.valid_context_for?(*args) }
+				raise "A context factory could not be found for these arguments" if factory.nil?
 				
 				# context found, execute block
 				factory.new(*args).instance_eval(&blk)

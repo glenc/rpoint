@@ -7,8 +7,8 @@ describe "WebContext" do
   
   describe "WebContext.valid_for_args" do
   
-    it "should respond to valid_for_args" do
-      WebContext.respond_to?(:valid_for_args).should == true
+    it "should respond to valid_context_for?" do
+      WebContext.respond_to?(:valid_context_for?).should == true
     end
   
     it "should be valid for a url" do
