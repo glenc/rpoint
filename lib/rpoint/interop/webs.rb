@@ -66,21 +66,11 @@ module RPoint
       private
       
       ##
-      # Determine the URL for a new site based on its
-      # parent URL and the new name
+      # Determine the URL for a new site based on the new name and options
+      # provided
       def self.determine_new_url(parent_web, new_name, options = {})
-        
-        # decide whether to use name or url defined in options
         url_explicitly_set = options.has_key?(:url) && !options[:url].nil?
-        new_name = url_explicitly_set ? options[:url] : new_name
-        
-        # url-ize new_name unless it was explicitly set
-        new_name = self.urlize_name(new_name) unless url_explicitly_set
-        
-        # make new url relative to site collection root
-        new_uri = Uri.new("#{parent_web.Url}/#{new_name}")
-        site_uri = Uri.new(parent_web.Site.Url)
-        site_uri.MakeRelative(new_uri)
+        url_explicitly_set ? options[:url] : self.urlize_name(new_name)
       end
       
       ##
