@@ -24,3 +24,12 @@ module RPoint
 		end
 	end
 end
+
+##
+# At method creates a new context
+def at(*args, &block)
+	RPoint::Contexts::ContextFactory.create_context(*args, &block)
+end
+
+# allow inside as well as at
+alias inside at

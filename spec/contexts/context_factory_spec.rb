@@ -19,7 +19,7 @@ describe "ContextFactory" do
     it "should raise ArgumentError if no args provided" do
       should_raise ArgumentError do
         ContextFactory.create_context do
-          puts "hi"
+          true
         end
       end
     end
@@ -27,6 +27,24 @@ describe "ContextFactory" do
     it "should raise ArgumentError if no block provided" do
       should_raise ArgumentError do
         ContextFactory.create_context "hi"
+      end
+    end
+    
+  end
+  
+  describe "at" do
+    
+    it "should raise ArgumentError if no block provided" do
+      should_raise ArgumentError do
+        at "hi"
+      end
+    end
+    
+    it "should raise ArgumentError if no args provided" do
+      should_raise ArgumentError do
+        at do
+          true
+        end
       end
     end
     

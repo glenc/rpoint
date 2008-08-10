@@ -10,7 +10,3 @@ require 'rpoint/interop'
 require 'rpoint/contexts'
 require 'rpoint/types'
 require 'rpoint/extensions'
-
-def at(*args, &block)
-	RPoint::Contexts::ContextFactory.create_context(*args, &block)
-end
