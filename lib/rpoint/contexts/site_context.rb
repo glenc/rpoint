@@ -10,7 +10,7 @@ module RPoint
 			##
 			# Checks if this context is a valid context for the
 			# args provided
-			def self.valid_for_args(*args)
+			def self.valid_context_for?(*args)
 				# if first arg is hash and has key of :site, valid
 				if args[0].is_a? Hash
 					return true if args[0].has_key?(:site)

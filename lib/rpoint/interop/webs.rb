@@ -3,7 +3,7 @@ module RPoint
     
     ##
     # Interop methods for working with webs
-    module Webs
+    class Webs
       
       ##
       # Gets a web by its URL
