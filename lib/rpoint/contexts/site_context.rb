@@ -11,6 +11,9 @@ module RPoint
 			# Checks if this context is a valid context for the
 			# args provided
 			def self.valid_context_for?(*args)
+			  # valid for SPSite
+			  return true if args[0].is_a? SPSite
+			  
 				# if first arg is hash and has key of :site, valid
 				if args[0].is_a? Hash
 					return true if args[0].has_key?(:site)
@@ -25,6 +28,7 @@ module RPoint
 			
 			# accessors
 			attr_reader :site
+			attr_reader :root_web
 			
 			
 			def initialize(*args)
@@ -38,6 +42,8 @@ module RPoint
 			  else
 			    raise ArgumentError
 		    end
+		    
+		    @root_web = @site.RootWeb
 			end
 			
 		end

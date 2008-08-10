@@ -8,6 +8,9 @@ module RPoint
 			# Checks if this context is a valid context for the
 			# args provided
 			def self.valid_context_for?(*args)
+			  # valid for SPWebApplication
+			  return true if args[0].is_a? SPWebApplication
+        
 				# if first arg is hash and has key of :webapp, :web_app, or :web_application, valid
 				if args[0].is_a? Hash
 					return true if args[0].has_key?(:web_app)
@@ -54,17 +57,17 @@ module RPoint
 			
 			##
 			# Create a site collection
-			def create_site(name, type, owner, options = {})
+			def create_site(name, type, owner, options = {}, &blk)
 			  # create our new web
 			  new_site = Sites.create_site(@web_application, name, type, owner, options)
-			  #new_site_context = SiteContext.new(new_site)
-			  #
-			  ## if we have a block, execute it in the scope of the new context
-			  #if block_given?
-			  #  new_site_context.instance_eval(&blk)
-		    #end
-		    #
-		    #new_site_context
+			  new_site_context = SiteContext.new(new_site)
+			  
+			  # if we have a block, execute it in the scope of the new context
+			  if block_given?
+			    new_site_context.instance_eval(&blk)
+		    end
+		    
+		    new_site_context
 			end
 			
 			

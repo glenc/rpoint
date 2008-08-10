@@ -8,8 +8,9 @@ module RPoint
 			# Checks if this context is a valid context for the
 			# args provided
 			def self.valid_context_for?(*args)
-				# if first arg is string, valid
+			  # if arg is an SPWeb or a String, valid
 				return true if args[0].is_a? String
+				return true if args[0].is_a? SPWeb
 				
 				# if first arg is hash and has key of :site, valid
 				if args[0].is_a? Hash
