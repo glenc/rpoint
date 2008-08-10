@@ -23,9 +23,21 @@ module RPoint
 			
 			# Instance Methods -------------------------------------------------------------------
 			
-			def initialize(options = {})
-				raise ArgumentError unless options.has_key?(:site)
-				@site = SPSite.new(options[:site])
+			def initialize(*args)
+			  raise ArgumentError if args.empty?
+			  
+			  if args[0].is_a? SPSite
+			    @site = args[0]
+		    elsif args[0].is_a? Hash
+				  raise ArgumentError unless options.has_key?(:site)
+				  @site = RPoint::Interop::Sites.get_site(options[:site])
+			  else
+			    raise ArgumentError
+		    end
+			end
+			
+			def url
+			  @site.Url
 			end
 			
 		end

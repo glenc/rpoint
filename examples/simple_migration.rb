@@ -10,9 +10,13 @@ require File.dirname(__FILE__) + '/example_helper'
 #end
 
 
-# create new site collections
+# display information about each site collection
 at :webapp => "http://localhost" do
-  create_site "My Site", BlankSite
+  
+  sites.each do |site|
+    puts site.url
+  end
+  
 end
 
 

@@ -40,8 +40,29 @@ module RPoint
 	      end
 			end
 			
+			
+			##
+			# Enumerate all site collections
+			def sites
+			  @sites ||= load_site_collections
+			end
+			
+			
+			##
+			# Create a site collection
 			def create_site(*args)
 			  puts "creating a site"
+			end
+			
+			
+			private
+			
+			def load_site_collections
+			  site_collections = []
+			  @web_application.Sites.each do |site|
+			    site_collections << SiteContext.new(site)
+		    end
+		    site_collections
 			end
 			
 		end
