@@ -41,3 +41,8 @@ module RPoint
 		end
 	end
 end
+
+# create easy references to types
+RPoint::Types::Sites::TEMPLATES.each do |template|
+  eval "#{template[0]} = RPoint::Types::Sites::#{template[0]}"
+end

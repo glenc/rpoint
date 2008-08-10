@@ -1,12 +1,12 @@
 require File.dirname(__FILE__) + '/example_helper'
 
 # create a new subweb beneath the root site collection
-at "http://localhost" do
-  create_web "Test New Site", RPoint::Types::Sites::BlankSite do
-    create_web "Child Web", RPoint::Types::Sites::BlankSite
+at "http://localhost/sites/testing" do
+  create_web "Test New Site", BlankSite do
+    create_web "Child Web", BlankSite
   end
   
-  create_web "TeamSite", RPoint::Types::Sites::TeamSite, :url => 'team_site'
+  create_web "TeamSite", TeamSite, :url => 'team_site'
 end
 
 
