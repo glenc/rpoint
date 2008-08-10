@@ -6,14 +6,6 @@ module RPoint
     # Get Object Helpers -----------------------------------------------------
     
     ##
-    # Gets a web application by its URL
-    def self.get_webapplication(url)
-      return url if url.is_a? SPWebApplication
-      return SPWebApplication.Lookup(Uri.new(url))
-    end
-    
-  
-    ##
     # Gets a list within a web
     def self.get_list(web, list_name)
       web = get_web(web)

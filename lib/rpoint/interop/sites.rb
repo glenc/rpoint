@@ -3,7 +3,7 @@ module RPoint
     
     ##
     # Module for working with Site Collections
-    module Sites
+    class Sites
       
       ##
       # Gets the site collection at the url specified

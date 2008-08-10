@@ -1,3 +1,4 @@
+require 'rpoint/contexts/web_application_context'
 require 'rpoint/contexts/web_context'
 require 'rpoint/contexts/site_context'
 require 'rpoint/contexts/list_context'

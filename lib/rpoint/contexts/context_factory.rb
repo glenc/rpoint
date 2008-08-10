@@ -3,7 +3,7 @@ module RPoint
 		
 		##
 		# Valid context factories
-		CONTEXT_FACTORIES = [WebContext, ListContext, SiteContext]
+		CONTEXT_FACTORIES = [WebContext, ListContext, SiteContext, WebApplicationContext]
 		
 		class ContextFactory
 			
