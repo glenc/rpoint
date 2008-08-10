@@ -41,7 +41,7 @@ module RPoint
 			def create_web(name, type, options = {}, &blk)
 			  puts "creating a new web"
 			  new_web = Webs.create_web(@web, name, type, options)
-			  puts "new web: #{new_web.Url}"
+			  #puts "new web: #{new_web.Url}"
 			  
 			  
 			  
