@@ -24,6 +24,7 @@ module RPoint
 			
 			# set up aliases
 			Administration = RPoint::Interop::Administration
+			Sites = RPoint::Interop::Sites
 			
 			def initialize(*args)
 			  raise ArgumentError if args.empty?
@@ -50,8 +51,17 @@ module RPoint
 			
 			##
 			# Create a site collection
-			def create_site(*args)
-			  puts "creating a site"
+			def create_site(name, type, owner, options = {})
+			  # create our new web
+			  new_site = Sites.create_site(@web_application, name, type, owner, options)
+			  #new_site_context = SiteContext.new(new_site)
+			  #
+			  ## if we have a block, execute it in the scope of the new context
+			  #if block_given?
+			  #  new_site_context.instance_eval(&blk)
+		    #end
+		    #
+		    #new_site_context
 			end
 			
 			

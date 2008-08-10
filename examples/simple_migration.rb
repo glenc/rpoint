@@ -19,6 +19,15 @@ at :webapp => "http://localhost" do
   
 end
 
+# create a new site collection
+at :webapp => "http://localhost" do
+  
+  create_site "Simple", BlankSite, 'pico\\glenc'
+  create_site "More Custom", BlankSite, 'pico\\glenc', :managed_path => "sites"
+  create_site "Even More Custom", BlankSite, 'pico\\glenc', :url => "http://localhost/sites/even_more"
+  
+end
+
 
 #at "http://localhost" do
 #	create_site "My Site", BlankSite

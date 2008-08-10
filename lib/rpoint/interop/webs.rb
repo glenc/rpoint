@@ -70,13 +70,7 @@ module RPoint
       # provided
       def self.determine_new_url(parent_web, new_name, options = {})
         url_explicitly_set = options.has_key?(:url) && !options[:url].nil?
-        url_explicitly_set ? options[:url] : self.urlize_name(new_name)
-      end
-      
-      ##
-      # Convert a name into a url-friendly name
-      def self.urlize_name(name)
-        name.downcase.gsub(/ /, '')
+        url_explicitly_set ? options[:url] : new_name.url_friendly
       end
       
     end
