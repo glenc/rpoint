@@ -8,6 +8,12 @@ at :webapp => "http://localhost" do
     
     # create site hierarchy within our new site
     inside root_web do
+      
+      # create lists
+      create_list "Documents", DocumentLibrary
+      create_list "Announcements", Announcements
+      
+      # create child sites
       create_web "Test New Site", BlankSite do
         create_web "Child Web", BlankSite
       end

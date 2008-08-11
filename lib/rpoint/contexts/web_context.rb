@@ -54,23 +54,26 @@ module RPoint
 			def create_web(name, template, options = {}, &blk)
 			  # create our new web
 			  new_web = Webs.create_web(@web, name, template, options)
-			  new_web_context = WebContext.new(new_web)
-			  
-			  # if we have a block, execute it in the scope of the new context
-			  if block_given?
-			    new_web_context.instance_eval(&blk)
-		    end
-		    
-		    new_web_context
+			  context_for_new_object(new_web, WebContext, &blk)
 			end
 			
 			
 			##
 			# Creates a new list
 			def create_list(name, template, options = {}, &blk)
-			  puts "creating list named #{name}"
+			  # create the new list
 			  new_list = Lists.create_list(@web, name, template, options)
-			  puts "done"
+			  context_for_new_object(new_list, ListContext, &blk)
+			end
+			
+			private
+			
+			def context_for_new_object(created_object, context_class, &blk)
+			  ctx = context_class.new(created_object)
+			  if block_given?
+			    ctx.instance_eval(&blk)
+		    end
+		    ctx
 			end
 			
 		end
