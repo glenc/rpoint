@@ -27,8 +27,9 @@ module RPoint
 			# accessors
 			attr_reader :web
 			
-			# alias webs interop
+			# alias interop classes
 			Webs = RPoint::Interop::Webs
+			Lists = RPoint::Interop::Lists
 			
 			
 			def initialize(*args)
@@ -50,9 +51,9 @@ module RPoint
 			
 			##
 			# Creates a new subweb
-			def create_web(name, type, options = {}, &blk)
+			def create_web(name, template, options = {}, &blk)
 			  # create our new web
-			  new_web = Webs.create_web(@web, name, type, options)
+			  new_web = Webs.create_web(@web, name, template, options)
 			  new_web_context = WebContext.new(new_web)
 			  
 			  # if we have a block, execute it in the scope of the new context
@@ -61,6 +62,15 @@ module RPoint
 		    end
 		    
 		    new_web_context
+			end
+			
+			
+			##
+			# Creates a new list
+			def create_list(name, template, options = {}, &blk)
+			  puts "creating list named #{name}"
+			  new_list = Lists.create_list(@web, name, template, options)
+			  puts "done"
 			end
 			
 		end
